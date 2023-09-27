@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from "react-native";
 
-export default function App() {
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <>
+      <View style={styles.bgGreen}>
+        <Text style={styles.textWhite}>CILIVO.COM</Text>
+      </View>
+    </>
   );
 }
-
 const styles = StyleSheet.create({
-  container: {
+  bgGreen: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "green",
+  },
+  textWhite: {
+    color: "#fff",
+    fontSize: 35,
   },
 });
+
+export default App;
