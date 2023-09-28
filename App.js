@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Platform } from "react-native";
+import { StyleSheet, Text, View, Platform, Image } from "react-native";
 // What is ract native API: api is a component that does not show you anythings but do something for you like `Stylesheet`. <--comment
 // Stylesheet is a api than make a configure you css styles. <--comment
 // Stylesheet.create: this method create styles for you. <--comment
@@ -13,12 +13,28 @@ import { StyleSheet, Text, View, Platform } from "react-native";
 // You just need to make a directory and make components with equal name for any plat form with the platform extionstion(test.android.js) and import the class(below code) and react native will detect to what file most be load on any platform. <--comment
 // import Home from "./home";
 
+// Images:
+// 1. Staitc images: there are the important and useful images like logo and is better that use theme static, but most be in you app local.
+// 2. Network images: the images that maybe change like user image or product image or ... and loaded by intenet connection.
+
 function App() {
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.textWhite}>CILIVO.COM</Text>
-        <Text style={styles.textWhite}>{Platform.OS}</Text>
+        {/* Network Image */}
+        <Image
+          source={{
+            uri: "https://picsum.photos/100/100",
+          }}
+          style={styles.indexImage}
+        />
+        {/* Static Image */}
+        {/* <Image
+          source={require("./assets/favicon.png")}
+          style={styles.indexImage}
+        /> */}
+        <Text style={styles.textWhite}>CILIVO</Text>
+        {/* <Text style={styles.textWhite}>{Platform.OS}</Text> */}
       </View>
     </>
   );
@@ -35,7 +51,7 @@ const styles = StyleSheet.create({
     ...Platform.select({
       android: {
         fontSize: 35,
-        textDecorationLine: "underline",
+        textDecorationLine: "none",
       },
       ios: {
         fontSize: 40,
@@ -46,6 +62,17 @@ const styles = StyleSheet.create({
         textDecorationLine: "none",
       },
     }),
+  },
+  indexImage: {
+    width: 100,
+    height: 100,
+    borderRadius: 15,
+    // borderRadius: 100 / 2, <--circle
+    // borderWidth: 2,
+    // borderColor: "white",
+    // resizeMode: "contain",
+    // resizeMode: "strech",
+    // resizeMode: "repeat",
   },
 });
 
