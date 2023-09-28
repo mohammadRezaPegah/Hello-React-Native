@@ -5,7 +5,9 @@ import {
   Platform,
   Image,
   ImageBackground,
+  TextInput,
 } from "react-native";
+import { useState } from "react";
 // What is ract native API: api is a component that does not show you anythings but do something for you like `Stylesheet`. <--comment
 // Stylesheet is a api than make a configure you css styles. <--comment
 // Stylesheet.create: this method create styles for you. <--comment
@@ -26,7 +28,26 @@ import {
 
 // ImageBackground:
 // It's like text and you can write any thiing in that but you can also have a background image.
+
+// TextEdit(input):
+// When you wanna take some information at user, you can use this.
 function App() {
+  const [text, setText] = useState("");
+  return (
+    <>
+      <View style={styles.container}>
+        <TextInput
+          value={text}
+          onChangeText={setText}
+          style={styles.input}
+        ></TextInput>
+        <Text numberOfLines={2} style={styles.textWhite}>
+          {text}
+        </Text>
+      </View>
+    </>
+  );
+
   // return (
   //   <>
   //     <View style={styles.container}>
@@ -49,20 +70,20 @@ function App() {
   // );
 
   // ImaeBackground
-  return (
-    <>
-      <View style={styles.container}>
-        <ImageBackground
-          source={{
-            uri: "https://picsum.photos/300/300",
-          }}
-          style={styles.bgImage}
-        >
-          <Text style={styles.textWhite}>CILIVO</Text>
-        </ImageBackground>
-      </View>
-    </>
-  );
+  // return (
+  //   <>
+  //     <View style={styles.container}>
+  //       <ImageBackground
+  //         source={{
+  //           uri: "https://picsum.photos/300/300",
+  //         }}
+  //         style={styles.bgImage}
+  //       >
+  //         <Text style={styles.textWhite}>CILIVO</Text>
+  //       </ImageBackground>
+  //     </View>
+  //   </>
+  // );
 }
 const styles = StyleSheet.create({
   container: {
@@ -104,6 +125,18 @@ const styles = StyleSheet.create({
     height: 300,
     justifyContent: "center",
     alignItems: "center",
+  },
+
+  input: {
+    height: 40,
+    width: 250,
+    margin: 12,
+    padding: 5,
+    fontSize: 24,
+    color: "black",
+    backgroundColor: "white",
+    borderWidth: 2,
+    borderColor: "gray",
   },
 });
 
