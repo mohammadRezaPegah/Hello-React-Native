@@ -11,6 +11,9 @@ import {
   TouchableHighlight,
   TouchableOpacity,
   Pressable,
+  ScrollView,
+  SafeAreaView,
+  StatusBar,
 } from "react-native";
 import { useState } from "react";
 // What is ract native API: api is a component that does not show you anythings but do something for you like `Stylesheet`. <--comment
@@ -46,58 +49,131 @@ import { useState } from "react";
 // This components are so useful
 // U can add any thing inside this component and make that touchable
 // But if you wanna have any costimze reaction to touch(like long press) this component does not help you and you most use pressable component.
+
+// ScrollView
+// If your page is largest than a page and nedd to scroll on that you nost use ScrollView Component
+
+// SafeAreaView
+// This component helps you to the content does not go under the phone top/below element(like battery percentage), and just works on IOS(>=11) devises.
+// In android you can use StatusBar Component or give the view Component margin/padding by yourself.
+
+// StatusBar
+// Have hidden property that default is false and by true value the phone status bar will be hided
 function App() {
   const [text, setText] = useState("");
+  const img = { uri: "https://picsum.photos/300/300" };
 
+  // SafeAreaView and StatusBar
   return (
     <>
-      <View style={styles.container}>
-        <TextInput
-          value={text}
-          onChangeText={setText}
-          style={styles.input}
-        ></TextInput>
-        <Text numberOfLines={2} style={styles.textWhite}>
-          {text}
-        </Text>
-        {/** Pressable basic */}
-        {/* <Pressable
-          onPress={() => {
-            setText("");
-          }}
-        >
-          <Text style={styles.textButton}>pressable</Text>
-        </Pressable> */}
-
-        {/** Pressable In/Out */}
-        {/* <Pressable
-          onPressIn={() => {
-            setText("In");
-          }}
-          onPressOut={() => {
-            setText("Out");
-          }}
-        >
-          <Text style={styles.textButton}>pressable</Text>
-        </Pressable> */}
-
-        {/** Pressable LongPress(500ms) */}
-        <Pressable
-          onLongPress={() => {
-            setText("Long press...");
-          }}
-          onPressIn={() => {
-            setText("In");
-          }}
-          onPressOut={() => {
-            setText("Out");
-          }}
-        >
-          <Text style={styles.textButton}>pressable</Text>
-        </Pressable>
-      </View>
+      <SafeAreaView style={styles.container}>
+        <StatusBar hidden={true} />
+        <ScrollView>
+          <TextInput
+            value={text}
+            onChangeText={setText}
+            style={styles.input}
+          ></TextInput>
+          <Text numberOfLines={2} style={styles.textWhite}>
+            {text}
+          </Text>
+          <Image
+            source={img}
+            style={{ width: 300, height: 300, marginTop: 15 }}
+          />
+          <Image
+            source={img}
+            style={{ width: 300, height: 300, marginTop: 15 }}
+          />
+          <Image
+            source={img}
+            style={{ width: 300, height: 300, marginTop: 15 }}
+          />
+        </ScrollView>
+      </SafeAreaView>
     </>
   );
+
+  // ScrollView
+  // return (
+  //   <>
+  //     <View style={styles.container}>
+  //       <ScrollView>
+  //         <TextInput
+  //           value={text}
+  //           onChangeText={setText}
+  //           style={styles.input}
+  //         ></TextInput>
+  //         <Text numberOfLines={2} style={styles.textWhite}>
+  //           {text}
+  //         </Text>
+  //         <Image
+  //           source={img}
+  //           style={{ width: 300, height: 300, marginTop: 15 }}
+  //         />
+  //         <Image
+  //           source={img}
+  //           style={{ width: 300, height: 300, marginTop: 15 }}
+  //         />
+  //         <Image
+  //           source={img}
+  //           style={{ width: 300, height: 300, marginTop: 15 }}
+  //         />
+  //       </ScrollView>
+  //     </View>
+  //   </>
+  // );
+
+  // Pressable
+  // return (
+  //   <>
+  //     <View style={styles.container}>
+  //       <TextInput
+  //         value={text}
+  //         onChangeText={setText}
+  //         style={styles.input}
+  //       ></TextInput>
+  //       <Text numberOfLines={2} style={styles.textWhite}>
+  //         {text}
+  //       </Text>
+  //       {/** Pressable basic */}
+  //       {/* <Pressable
+  //         onPress={() => {
+  //           setText("");
+  //         }}
+  //       >
+  //         <Text style={styles.textButton}>pressable</Text>
+  //       </Pressable> */}
+
+  //       {/** Pressable In/Out */}
+  //       {/* <Pressable
+  //         onPressIn={() => {
+  //           setText("In");
+  //         }}
+  //         onPressOut={() => {
+  //           setText("Out");
+  //         }}
+  //       >
+  //         <Text style={styles.textButton}>pressable</Text>
+  //       </Pressable> */}
+
+  //       {/** Pressable LongPress(500ms) */}
+  //       <Pressable
+  //         onLongPress={() => {
+  //           setText("Long press...");
+  //         }}
+  //         onPressIn={() => {
+  //           setText("In");
+  //         }}
+  //         onPressOut={() => {
+  //           setText("Out");
+  //         }}
+  //       >
+  //         <Text style={styles.textButton}>pressable</Text>
+  //       </Pressable>
+  //     </View>
+  //   </>
+  // );
 
   // Touchable
   // return (
