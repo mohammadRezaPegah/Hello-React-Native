@@ -10,6 +10,7 @@ import {
   TouchableWithoutFeedback,
   TouchableHighlight,
   TouchableOpacity,
+  Pressable,
 } from "react-native";
 import { useState } from "react";
 // What is ract native API: api is a component that does not show you anythings but do something for you like `Stylesheet`. <--comment
@@ -47,6 +48,7 @@ import { useState } from "react";
 // But if you wanna have any costimze reaction to touch(like long press) this component does not help you and you most use pressable component.
 function App() {
   const [text, setText] = useState("");
+
   return (
     <>
       <View style={styles.container}>
@@ -58,35 +60,86 @@ function App() {
         <Text numberOfLines={2} style={styles.textWhite}>
           {text}
         </Text>
-        {/** on click does not have any animated reaction */}
-        {/* <TouchableWithoutFeedback
+        {/** Pressable basic */}
+        {/* <Pressable
           onPress={() => {
             setText("");
           }}
         >
-          <Text style={styles.textButton}>clear</Text>
-        </TouchableWithoutFeedback> */}
+          <Text style={styles.textButton}>pressable</Text>
+        </Pressable> */}
 
-        {/** on click will hilight */}
-        {/* <TouchableHighlight
-          onPress={() => {
-            setText("");
+        {/** Pressable In/Out */}
+        {/* <Pressable
+          onPressIn={() => {
+            setText("In");
+          }}
+          onPressOut={() => {
+            setText("Out");
           }}
         >
-          <Text style={styles.textButton}>highlight</Text>
-        </TouchableHighlight> */}
+          <Text style={styles.textButton}>pressable</Text>
+        </Pressable> */}
 
-        {/** on click will change opacit */}
-        <TouchableOpacity
-          onPress={() => {
-            setText("");
+        {/** Pressable LongPress(500ms) */}
+        <Pressable
+          onLongPress={() => {
+            setText("Long press...");
+          }}
+          onPressIn={() => {
+            setText("In");
+          }}
+          onPressOut={() => {
+            setText("Out");
           }}
         >
-          <Text style={styles.textButton}>Opacity</Text>
-        </TouchableOpacity>
+          <Text style={styles.textButton}>pressable</Text>
+        </Pressable>
       </View>
     </>
   );
+
+  // Touchable
+  // return (
+  //   <>
+  //     <View style={styles.container}>
+  //       <TextInput
+  //         value={text}
+  //         onChangeText={setText}
+  //         style={styles.input}
+  //       ></TextInput>
+  //       <Text numberOfLines={2} style={styles.textWhite}>
+  //         {text}
+  //       </Text>
+  //       {/** on click does not have any animated reaction */}
+  //       {/* <TouchableWithoutFeedback
+  //         onPress={() => {
+  //           setText("");
+  //         }}
+  //       >
+  //         <Text style={styles.textButton}>clear</Text>
+  //       </TouchableWithoutFeedback> */}
+
+  //       {/** on click will hilight */}
+  //       {/* <TouchableHighlight
+  //         onPress={() => {
+  //           setText("");
+  //         }}
+  //       >
+  //         <Text style={styles.textButton}>highlight</Text>
+  //       </TouchableHighlight> */}
+
+  //       {/** on click will change opacit */}
+  //       <TouchableOpacity
+  //         onPress={() => {
+  //           setText("");
+  //         }}
+  //       >
+  //         <Text style={styles.textButton}>Opacity</Text>
+  //       </TouchableOpacity>
+  //     </View>
+  //   </>
+  // );
 
   // Button
   // return (
