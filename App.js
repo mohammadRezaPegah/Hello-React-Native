@@ -7,6 +7,9 @@ import {
   ImageBackground,
   TextInput,
   Button,
+  TouchableWithoutFeedback,
+  TouchableHighlight,
+  TouchableOpacity,
 } from "react-native";
 import { useState } from "react";
 // What is ract native API: api is a component that does not show you anythings but do something for you like `Stylesheet`. <--comment
@@ -36,8 +39,12 @@ import { useState } from "react";
 // Button
 // The first notic is that this component is defrence shown between android and IOS.
 // The second notic is that you cant costmize this component very much.
-// The thirdth notic is that we didn't use that and almost every time use tuchable component.
+// The thirdth notic is that we didn't use that and almost every time use touchable component.
 
+// Touchable
+// This components are so useful
+// U can add any thing inside this component and make that touchable
+// But if you wanna have any costimze reaction to touch(like long press) this component does not help you and you most use pressable component.
 function App() {
   const [text, setText] = useState("");
   return (
@@ -51,16 +58,58 @@ function App() {
         <Text numberOfLines={2} style={styles.textWhite}>
           {text}
         </Text>
-        <Button
-          title="clear"
-          color="red"
+        {/** on click does not have any animated reaction */}
+        {/* <TouchableWithoutFeedback
           onPress={() => {
             setText("");
           }}
-        ></Button>
+        >
+          <Text style={styles.textButton}>clear</Text>
+        </TouchableWithoutFeedback> */}
+
+        {/** on click will hilight */}
+        {/* <TouchableHighlight
+          onPress={() => {
+            setText("");
+          }}
+        >
+          <Text style={styles.textButton}>highlight</Text>
+        </TouchableHighlight> */}
+
+        {/** on click will change opacit */}
+        <TouchableOpacity
+          onPress={() => {
+            setText("");
+          }}
+        >
+          <Text style={styles.textButton}>Opacity</Text>
+        </TouchableOpacity>
       </View>
     </>
   );
+
+  // Button
+  // return (
+  //   <>
+  //     <View style={styles.container}>
+  //       <TextInput
+  //         value={text}
+  //         onChangeText={setText}
+  //         style={styles.input}
+  //       ></TextInput>
+  //       <Text numberOfLines={2} style={styles.textWhite}>
+  //         {text}
+  //       </Text>
+  //       <Button
+  //         title="clear"
+  //         color="red"
+  //         onPress={() => {
+  //           setText("");
+  //         }}
+  //       ></Button>
+  //     </View>
+  //   </>
+  // );
 
   // TextINput
   // return (
@@ -168,6 +217,15 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderWidth: 2,
     borderColor: "gray",
+  },
+  textButton: {
+    backgroundColor: "blue",
+    color: "white",
+    padding: 5,
+    width: 100,
+    height: 30,
+    textAlign: "center",
+    borderRadius: 15,
   },
 });
 
