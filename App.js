@@ -1,25 +1,39 @@
 import {
   StyleSheet,
-  Text,
-  Platform,
   SafeAreaView,
   StatusBar,
-  ActivityIndicator,
+  Pressable,
+  Text,
+  Alert,
 } from "react-native";
 
-// Loading efect
-// for loading efect you most use ActivityIndicator component that have 2 prop
-// size: small, medium, lage
-// color
+// Alert
+// Exams:
+// Alert.alert('title', 'message', btnArray)
+// Alert.prompt('title', 'message', callBack function) **just work on IOS**
 function App() {
   return (
     <>
       <SafeAreaView style={styles.container}>
         <StatusBar hidden={true} />
-        <ActivityIndicator size="large" color="white" />
-        <Text numberOfLines={2} style={styles.textWhite}>
-          Cilivo
-        </Text>
+        <Pressable
+          style={[styles.button, styles.buttonOpen]}
+          onPress={() => {
+            Alert.alert("title!", "message", [
+              {
+                text: "Yes",
+                onPress: () => {},
+              },
+              {
+                text: "No",
+                onPress: () => {},
+              },
+            ]);
+            // Alert.prompt("title!", "message", (text) => alert(text));
+          }}
+        >
+          <Text style={styles.textStyle}>Press here!</Text>
+        </Pressable>
       </SafeAreaView>
     </>
   );
@@ -27,26 +41,24 @@ function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    color: "white",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: Platform.OS === "android" ? "green" : "blue",
+    backgroundColor: "white",
   },
-  textWhite: {
-    color: "#fff",
-    ...Platform.select({
-      android: {
-        fontSize: 35,
-        textDecorationLine: "none",
-      },
-      ios: {
-        fontSize: 40,
-        textDecorationLine: "none",
-      },
-      web: {
-        fontSize: 40,
-        textDecorationLine: "none",
-      },
-    }),
+  button: {
+    borderRadius: 15,
+    padding: 5,
+    elevation: 2, // just support in android
+  },
+  buttonOpen: {
+    backgroundColor: "pink",
+  },
+  textStyle: {
+    fontSize: 20,
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
 
