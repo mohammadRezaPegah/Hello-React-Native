@@ -99,6 +99,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     // Andeoid
     elevation: 4,
+    width: "100%",
 
     // IOS
     shadowColor: "black",

@@ -45,3 +45,7 @@ To seen all core components read ReactNativ documentaion.
 #### Your native components:
 
 ##### Developed componets by your self to use in a app.
+
+#### Size:
+
+The size has benn calculate by dips(Dansity independrt pixels), Also you can use precenage `'100%'`
