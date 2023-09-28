@@ -14,6 +14,7 @@ import {
   ScrollView,
   SafeAreaView,
   StatusBar,
+  RefreshControl,
 } from "react-native";
 import { useState } from "react";
 // What is ract native API: api is a component that does not show you anythings but do something for you like `Stylesheet`. <--comment
@@ -59,16 +60,33 @@ import { useState } from "react";
 
 // StatusBar
 // Have hidden property that default is false and by true value the phone status bar will be hided
+
+// RefreshControl
+// If you wanna referesh app by scrolling up(like safari) you most use this component.
 function App() {
   const [text, setText] = useState("");
+  const [refreshing, setRefreshing] = useState(false);
   const img = { uri: "https://picsum.photos/300/300" };
 
-  // SafeAreaView and StatusBar
+  // RefershControl
   return (
     <>
       <SafeAreaView style={styles.container}>
         <StatusBar hidden={true} />
-        <ScrollView>
+        <ScrollView
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={() => {
+                setRefreshing(true);
+                setTimeout(() => {
+                  setRefreshing(false);
+                  setText("Reloaded");
+                }, 1500);
+              }}
+            />
+          }
+        >
           <TextInput
             value={text}
             onChangeText={setText}
@@ -93,6 +111,37 @@ function App() {
       </SafeAreaView>
     </>
   );
+
+  // SafeAreaView and StatusBar
+  // return (
+  //   <>
+  //     <SafeAreaView style={styles.container}>
+  //       <StatusBar hidden={true} />
+  //       <ScrollView>
+  //         <TextInput
+  //           value={text}
+  //           onChangeText={setText}
+  //           style={styles.input}
+  //         ></TextInput>
+  //         <Text numberOfLines={2} style={styles.textWhite}>
+  //           {text}
+  //         </Text>
+  //         <Image
+  //           source={img}
+  //           style={{ width: 300, height: 300, marginTop: 15 }}
+  //         />
+  //         <Image
+  //           source={img}
+  //           style={{ width: 300, height: 300, marginTop: 15 }}
+  //         />
+  //         <Image
+  //           source={img}
+  //           style={{ width: 300, height: 300, marginTop: 15 }}
+  //         />
+  //       </ScrollView>
+  //     </SafeAreaView>
+  //   </>
+  // );
 
   // ScrollView
   // return (
