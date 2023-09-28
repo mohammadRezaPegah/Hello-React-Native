@@ -69,48 +69,48 @@ function App() {
   const img = { uri: "https://picsum.photos/300/300" };
 
   // RefershControl
-  return (
-    <>
-      <SafeAreaView style={styles.container}>
-        <StatusBar hidden={true} />
-        <ScrollView
-          refreshControl={
-            <RefreshControl
-              refreshing={refreshing}
-              onRefresh={() => {
-                setRefreshing(true);
-                setTimeout(() => {
-                  setRefreshing(false);
-                  setText("Reloaded");
-                }, 1500);
-              }}
-            />
-          }
-        >
-          <TextInput
-            value={text}
-            onChangeText={setText}
-            style={styles.input}
-          ></TextInput>
-          <Text numberOfLines={2} style={styles.textWhite}>
-            {text}
-          </Text>
-          <Image
-            source={img}
-            style={{ width: 300, height: 300, marginTop: 15 }}
-          />
-          <Image
-            source={img}
-            style={{ width: 300, height: 300, marginTop: 15 }}
-          />
-          <Image
-            source={img}
-            style={{ width: 300, height: 300, marginTop: 15 }}
-          />
-        </ScrollView>
-      </SafeAreaView>
-    </>
-  );
+  // return (
+  //   <>
+  //     <SafeAreaView style={styles.container}>
+  //       <StatusBar hidden={true} />
+  //       <ScrollView
+  //         refreshControl={
+  //           <RefreshControl
+  //             refreshing={refreshing}
+  //             onRefresh={() => {
+  //               setRefreshing(true);
+  //               setTimeout(() => {
+  //                 setRefreshing(false);
+  //                 setText("Reloaded");
+  //               }, 1500);
+  //             }}
+  //           />
+  //         }
+  //       >
+  //         <TextInput
+  //           value={text}
+  //           onChangeText={setText}
+  //           style={styles.input}
+  //         ></TextInput>
+  //         <Text numberOfLines={2} style={styles.textWhite}>
+  //           {text}
+  //         </Text>
+  //         <Image
+  //           source={img}
+  //           style={{ width: 300, height: 300, marginTop: 15 }}
+  //         />
+  //         <Image
+  //           source={img}
+  //           style={{ width: 300, height: 300, marginTop: 15 }}
+  //         />
+  //         <Image
+  //           source={img}
+  //           style={{ width: 300, height: 300, marginTop: 15 }}
+  //         />
+  //       </ScrollView>
+  //     </SafeAreaView>
+  //   </>
+  // );
 
   // SafeAreaView and StatusBar
   // return (
