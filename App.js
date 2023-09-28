@@ -11,11 +11,15 @@ import { StyleSheet, Text, View, Platform } from "react-native";
 // Also if the component between platforms ahve a basic deference again Platform.select() is not a good choise, follow below. <--comment
 // Create optimzed component for any platform and use react native To use them(native file extentions). <--comment
 // You just need to make a directory and make components with equal name for any plat form with the platform extionstion(test.android.js) and import the class(below code) and react native will detect to what file most be load on any platform. <--comment
-import Home from "./home";
+// import Home from "./home";
+
 function App() {
   return (
     <>
-      <Home></Home>
+      <View style={styles.container}>
+        <Text style={styles.textWhite}>CILIVO.COM</Text>
+        <Text style={styles.textWhite}>{Platform.OS}</Text>
+      </View>
     </>
   );
 }
