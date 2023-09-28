@@ -6,6 +6,7 @@ import {
   Image,
   ImageBackground,
   TextInput,
+  Button,
 } from "react-native";
 import { useState } from "react";
 // What is ract native API: api is a component that does not show you anythings but do something for you like `Stylesheet`. <--comment
@@ -31,6 +32,12 @@ import { useState } from "react";
 
 // TextEdit(input):
 // When you wanna take some information at user, you can use this.
+
+// Button
+// The first notic is that this component is defrence shown between android and IOS.
+// The second notic is that you cant costmize this component very much.
+// The thirdth notic is that we didn't use that and almost every time use tuchable component.
+
 function App() {
   const [text, setText] = useState("");
   return (
@@ -44,10 +51,34 @@ function App() {
         <Text numberOfLines={2} style={styles.textWhite}>
           {text}
         </Text>
+        <Button
+          title="clear"
+          color="red"
+          onPress={() => {
+            setText("");
+          }}
+        ></Button>
       </View>
     </>
   );
 
+  // TextINput
+  // return (
+  //   <>
+  //     <View style={styles.container}>
+  //       <TextInput
+  //         value={text}
+  //         onChangeText={setText}
+  //         style={styles.input}
+  //       ></TextInput>
+  //       <Text numberOfLines={2} style={styles.textWhite}>
+  //         {text}
+  //       </Text>
+  //     </View>
+  //   </>
+  // );
+
+  // Image
   // return (
   //   <>
   //     <View style={styles.container}>
