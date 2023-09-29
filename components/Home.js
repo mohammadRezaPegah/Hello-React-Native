@@ -1,4 +1,6 @@
 import { View, Text, StyleSheet, Button } from "react-native";
+
+// To send information to other component with navigation act like below and in the target i explained how works.
 const Home = ({ navigation }) => {
   return (
     <>
@@ -7,7 +9,7 @@ const Home = ({ navigation }) => {
         <Button
           title="Products"
           onPress={() => {
-            navigation.navigate("Products");
+            navigation.navigate("Products", { id: 1 });
           }}
         />
       </View>
