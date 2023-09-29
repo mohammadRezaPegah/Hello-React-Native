@@ -1,34 +1,12 @@
 import { StyleSheet, Text, View, Pressable, Image } from "react-native";
 import { useFonts } from "expo-font";
 import { useEffect, useState } from "react";
-import * as Location from "expo-location";
+import useLocation from "./hooks/useLocation";
+// Now we want to make our personal hook, for exam we want to make a hook for all the locations code that we wort in prev commit.
+// First of all creat hooks directory.
 
-// Now we go to location access.
-// U most instal expo location from below command
-// npx expo install expo-location
 const App = () => {
-  const [location, setLocation] = useState();
-  const getLocation = async () => {
-    try {
-      const result = await Location.requestForegroundPermissionsAsync();
-
-      if (!result.granted) {
-        alert("You need to enable permision to access to location!");
-        return;
-      }
-      const {
-        coords: { latitude, longitude },
-      } = await Location.getCurrentPositionAsync({
-        accuracy: Location.Accuracy.Highest,
-      });
-      setLocation({ latitude, longitude });
-    } catch (error) {
-      console.log("Error: ", error);
-    }
-  };
-  useEffect(() => {
-    getLocation();
-  }, []);
+  const location = useLocation();
   let [fontsloaded] = useFonts({
     "iran-sanse": require("./assets/fonts/IRANSansWeb.ttf"),
   });
