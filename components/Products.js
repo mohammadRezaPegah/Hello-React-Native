@@ -1,5 +1,5 @@
-import { View, Text, StyleSheet } from "react-native";
-const Products = () => {
+import { View, Text, StyleSheet, Button } from "react-native";
+const Products = ({ navigation }) => {
   return (
     <>
       <View style={styles.container}>
