@@ -1,6 +1,14 @@
-import { StyleSheet, ActivityIndicator, Text, View } from "react-native";
+import {
+  StyleSheet,
+  ActivityIndicator,
+  Text,
+  View,
+  Pressable,
+  Image,
+} from "react-native";
 import { useFonts } from "expo-font";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import * as ImagePicker from "expo-image-picker";
 import * as Permissions from "expo-permissions";
 
@@ -16,17 +24,20 @@ import * as Permissions from "expo-permissions";
 // permission names:
 // Galery: MEDIA_LIBRARY
 // location: LOCATION_FOREGROUND
+
+// Now we go to galry access.
 const App = () => {
+  const [imgUri, setImageUri] = useState();
   const requestPermision = async () => {
     // Get permission by api Permission
-    const permissions = await Permissions.askAsync(
-      Permissions.MEDIA_LIBRARY,
-      Permissions.LOCATION_FOREGROUND
-    );
-    console.log(
-      permissions.permissions.locationForeground.granted,
-      permissions.permissions.mediaLibrary.granted
-    );
+    // const permissions = await Permissions.askAsync(
+    //   Permissions.MEDIA_LIBRARY,
+    //   Permissions.LOCATION_FOREGROUND
+    // );
+    // console.log(
+    //   permissions.permissions.locationForeground.granted,
+    //   permissions.permissions.mediaLibrary.granted
+    // );
     // Get permission by image expo picker
     const result = await ImagePicker.requestMediaLibraryPermissionsAsync();
     if (!result.granted)
@@ -38,6 +49,20 @@ const App = () => {
   let [fontsloaded] = useFonts({
     "iran-sanse": require("./assets/fonts/IRANSansWeb.ttf"),
   });
+
+  const selectImage = async () => {
+    // Get iamge
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync();
+      // if user does not select iamge the below propert will be true.
+      // result.canceled;
+      if (!result.canceled) {
+        setImageUri(result.assets[0].uri);
+      }
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  };
   if (!fontsloaded) {
     return (
       <>
@@ -49,6 +74,15 @@ const App = () => {
     <>
       <View style={styles.container}>
         <Text style={styles.text}>سیلیوو - ارتباط بدون واسطه</Text>
+        <Pressable
+          style={styles.galleryBTN}
+          onPress={() => {
+            selectImage();
+          }}
+        >
+          <Ionicons name="camera" size={30} color="white" />
+        </Pressable>
+        <Image source={{ uri: imgUri }} style={{ width: 300, height: 300 }} />
       </View>
     </>
   );
@@ -62,6 +96,15 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 30,
     fontFamily: "iran-sanse",
+  },
+  galleryBTN: {
+    width: "50%",
+    height: 50,
+    margin: 2,
+    padding: 5,
+    backgroundColor: "green",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
