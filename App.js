@@ -1,8 +1,14 @@
-import { StyleSheet, Text, View, Pressable, Image } from "react-native";
+import Navigator from "./navigators/tabNavigator/navigator";
+// To use navigation you most import NavigationContainer and add navigation inside that.
+// The below navigaition is bottom navigation(like instagram) and for more read the documentions (https://reactnavigation.org/docs)
 
 const App = () => {
-  return <></>;
+  const Tab = createBottomTabNavigator();
+  return (
+    <>
+      <Navigator />
+    </>
+  );
 };
-const styles = StyleSheet.create({});
 
 export default App;

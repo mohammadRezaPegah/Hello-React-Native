@@ -53,4 +53,15 @@ The size has benn calculate by dips(Dansity independrt pixels), Also you can use
 #### Navigation(routing):
 
 React native haven't any native api for this and you most use community components for this.
-The best package is `ReactNavigation`(reactnavigation.org)
+The best package is `ReactNavigation`(reactnavigation.org).
+\*\* Top package gives you some defrence view of navigator.
+
+To use navigatio(any package) first of all you most required 2 other package
+`npm install @react-navigation/native`
+and
+if use expo:
+`npx expo install react-native-screens react-native-safe-area-context`
+
+else
+`npm install react-native-screens react-native-safe-area-context`
+and android and ios setting.
