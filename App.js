@@ -1,26 +1,30 @@
-import { StyleSheet, ActivityIndicator } from "react-native";
-import { Text } from "react-native";
-import { View } from "react-native";
+import { StyleSheet, ActivityIndicator, Text, View } from "react-native";
 import { useFonts } from "expo-font";
-import Ionicons from "@expo/vector-icons/Ionicons";
+import { useEffect } from "react";
+import * as ImagePicker from "expo-image-picker";
 
-// Customize font
-// If you wanna add customize font to the your application you most first of all installe below package.
-// expo-font
-// Add your customized font to the project and define that in the component
+// For working with camera or phone gallery U most use outside apis, we have not native api for this.
+// For outside components U can use reactnative.directory or if you are using expo, You can use expos apis from docs.expo.dev
 
-// Icon
-// For add Icon you can use Ionicons from expo, the list of icons is in https://icons.expo.fyi.
+// Notic: to use somthing like gallery first of all you most take the permission from the user, now i'll explain this to U.
+// for exam V want on component didmount get the user permission.
+// for takinhg permision to gallery we have 2 way, one of they is using the expo-image-picker api and the second is using the api permision(native)
 const App = () => {
+  const requestPermision = async () => {
+    const result = await ImagePicker.requestMediaLibraryPermissionsAsync();
+    if (!result.granted)
+      alert("You need to enable permision to access to library!");
+  };
+  useEffect(() => {
+    requestPermision();
+  }, []);
   let [fontsloaded] = useFonts({
     "iran-sanse": require("./assets/fonts/IRANSansWeb.ttf"),
   });
   if (!fontsloaded) {
     return (
       <>
-        <View style={styles.container}>
-          <ActivityIndicator size="large" color="black" />
-        </View>
+        <View style={styles.container}></View>
       </>
     );
   }
@@ -28,7 +32,6 @@ const App = () => {
     <>
       <View style={styles.container}>
         <Text style={styles.text}>سیلیوو - ارتباط بدون واسطه</Text>
-        <Ionicons name="md-home" size={30} color="green" />
       </View>
     </>
   );
