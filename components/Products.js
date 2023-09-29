@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet, Button } from "react-native";
 // To get information from navigation we have a property called route and with this you can take information, follow the code.
-const Products = ({ route }) => {
+const Products = () => {
   return (
     <>
       <View style={styles.container}>
-        <Text style={styles.text}>Products, id: {route.params.id}</Text>
+        <Text style={styles.text}>Products</Text>
       </View>
     </>
   );
