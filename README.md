@@ -87,3 +87,8 @@ The notic is, if you wanna use any option exept Expo push notification you most 
 2. token most be save in server.
 3. send notification by server.
 4. make a path for notification( Exam: on notification click open chat page)
+
+###### Notification types:
+
+- Locale: It's like phone alarm and do not need to internet connection.(send by appself)
+- Compatibility: This type is like telegram new messages and needs intenet connection. (send by server)
